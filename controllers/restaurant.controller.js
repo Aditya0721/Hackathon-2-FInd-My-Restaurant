@@ -142,10 +142,48 @@ exports.updateById = async(req, res)=>{
     }
     const result = await restaurantModel.updateOne({_id:req.params.id},{$set:req.body})
      
-    console.log(result)
+    // console.log(result)
 
     return res.status(200).json({
         message:"restaurant updated successfully"
+     })
+ }
+ catch(err){
+     res.status(500).send("Some error occurred while creating the Restaurant")
+     console.log(err)
+ }
+}
+
+exports.deleteById = async(req, res)=>{
+
+    try{
+    
+    const result = await restaurantModel.findOneAndDelete({_id:req.params.id})
+     
+    // console.log(result)
+
+    return res.status(200).json({
+        restaurant: result,
+        message:"Restaurant deleted successfully"
+     })
+ }
+ catch(err){
+     res.status(500).send("Some error occurred while creating the Restaurant")
+     console.log(err)
+ }
+}
+
+exports.deleteAll = async(req, res)=>{
+
+    try{
+    
+    const result = await restaurantModel.deleteMany({})
+     
+    // console.log(result)
+
+    return res.status(200).json({
+        restaurant: result,
+        message: "Restaurants deleted successfully"
      })
  }
  catch(err){

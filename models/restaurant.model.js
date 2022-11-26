@@ -28,20 +28,12 @@ const restaurantSchema = mongoose.Schema({
     rating:{
         type:Number,
         required: true
-    },
-    createdAt:{
-        type : Date,
-        default : ()=>{
-            return Date.now();
-        } 
-    },
-    updatedAt:{
-        type : Date,
-        default : ()=>{
-            return Date.now();
-        } 
     }
+},
+{
+    timestamps: true, // Auto-populate createdAt and updatedAt
 })
+
 
 module.exports = mongoose.model("restaurants", restaurantSchema)
 

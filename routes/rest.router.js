@@ -30,4 +30,12 @@ restRouter.get("/rating/:ratingValue", restaurantController.fetchByRating)
 // PUT /api/restaurant/id
 // This API updates existing details of the restaurant with a particular id.
 restRouter.put("/:id", restaurantController.updateById)
+
+// DELETE /api/restaurant/id 
+// This API deletes existing details of the restaurant with a particular id. After successful deletion, the following response should be returned with status code 200.
+restRouter.delete("/:id", restaurantController.deleteById)
+
+// DELETE  /api/restaurant/
+// This API deletes all existing details of the restaurants
+restRouter.delete("", restaurantController.deleteAll)
 module.exports = restRouter
